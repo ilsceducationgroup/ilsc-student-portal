@@ -15,11 +15,11 @@ const Dashboard: React.FC<DashboardProps> = ({ userData, announcements }) => {
         <h2 className="text-2xl font-bold">
           Welcome back, {userData.firstname}!
         </h2>
-        <p className="mt-2">
+        <div className="mt-2">
           <p className="mt-2">
             Last login: {formatDate(userData.lastlogin || "")}
           </p>
-        </p>
+        </div>
         <div className="mt-4 flex space-x-2">
           <button className="bg-white text-blue-600 px-4 py-2 rounded-md font-medium hover:bg-blue-50">
             View Timetable

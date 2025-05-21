@@ -27,9 +27,9 @@ const ClassInformation: React.FC<ClassesProps> = ({ userData }) => {
           <h3 className="text-lg font-medium text-gray-900">
             Class Information
           </h3>
-          <div className="flex space-x-2">
+          <div className="flex flex-wrap gap-2 overflow-x-auto pb-2 pl-4">
             <button
-              className={`px-4 py-2 rounded-md font-medium ${
+              className={`px-3 py-1.5 text-base rounded-md ${
                 activeSectionDropdown === "timetable"
                   ? "bg-blue-600 text-white"
                   : "bg-gray-100 text-gray-800 hover:bg-gray-200"
@@ -39,7 +39,7 @@ const ClassInformation: React.FC<ClassesProps> = ({ userData }) => {
               Timetable
             </button>
             <button
-              className={`px-4 py-2 rounded-md font-medium ${
+              className={`px-3 py-1.5 text-base rounded-md ${
                 activeSectionDropdown === "attendance"
                   ? "bg-blue-600 text-white"
                   : "bg-gray-100 text-gray-800 hover:bg-gray-200"
@@ -49,7 +49,7 @@ const ClassInformation: React.FC<ClassesProps> = ({ userData }) => {
               Attendance
             </button>
             <button
-              className={`px-4 py-2 rounded-md font-medium ${
+              className={`px-3 py-1.5 text-base rounded-md ${
                 activeSectionDropdown === "results"
                   ? "bg-blue-600 text-white"
                   : "bg-gray-100 text-gray-800 hover:bg-gray-200"
