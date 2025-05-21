@@ -4,6 +4,7 @@ import { Bell, Menu, X, ChevronDown } from "lucide-react";
 import { HeaderProps } from "../../../../types";
 import NotificationsMenu from "./NotificationsMenu";
 import { getInitials } from "../../../../utils/helpers";
+import { announcements } from "../../../../data/mockData";
 
 const Header: React.FC<HeaderProps> = ({
   userData,
@@ -33,7 +34,9 @@ const Header: React.FC<HeaderProps> = ({
                 <Bell className="h-6 w-6" />
                 <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"></span>
               </button>
-              {showNotifications && <NotificationsMenu />}
+              {showNotifications && (
+                <NotificationsMenu announcements={announcements} />
+              )}
             </div>
 
             <div className="flex items-center ml-3">

@@ -4,18 +4,18 @@ import React, { useState } from "react";
 import Header from "../app/components/layout/Header";
 import Sidebar from "../app/components/layout/Sidebar";
 import MobileMenu from "../app/components/layout/MobileMenu";
-// import Dashboard from "@/app/components/dashboard/AnnouncementList";
-// import Profile from "@/components/profile/Profile";
-// import Classes from "@app/components/classes/ClassInformation";
-// import Requests from "@/components/requests/ServiceRequestList";
-// import Documents from "@/components/documents/DocumentList";
-// import Surveys from "@/components/surveys/SurveyList";
+import Dashboard from "../app/components/dashboard/Dashboard";
+import Profile from "../app/components/profile/StudentProfile";
+import Classes from "../app/components/classes/ClassInformation";
+import Requests from "../app/components/requests/ServiceRequestList";
+import Documents from "../app/components/documents/DocumentList";
+import Surveys from "../app/components/surveys/SurveyList";
 import {
   userData,
-  // announcements,
-  // serviceRequests,
-  // documents,
-  // surveys,
+  announcements,
+  serviceRequests,
+  documents,
+  surveys,
 } from "../../data/mockData";
 
 export default function Home() {
@@ -30,18 +30,18 @@ export default function Home() {
   // Render appropriate content based on active tab
   const renderContent = () => {
     switch (activeTab) {
-      // case "home":
-      //   return <Dashboard userData={userData} announcements={announcements} />;
-      // case "profile":
-      //   return <Profile userData={userData} />;
-      // case "classes":
-      //   return <Classes userData={userData} />;
-      // case "requests":
-      //   return <Requests serviceRequests={serviceRequests} />;
-      // case "documents":
-      //   return <Documents documents={documents} />;
-      // case "surveys":
-      //   return <Surveys surveys={surveys} />;
+      case "home":
+        return <Dashboard userData={userData} announcements={announcements} />;
+      case "profile":
+        return <Profile userData={userData} />;
+      case "classes":
+        return <Classes userData={userData} />;
+      case "requests":
+        return <Requests serviceRequests={serviceRequests} />;
+      case "documents":
+        return <Documents documents={documents} />;
+      case "surveys":
+        return <Surveys surveys={surveys} />;
       default:
         return (
           <div className="text-center py-12">
