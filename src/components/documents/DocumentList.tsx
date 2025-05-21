@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Document } from "@/types";
 import { FileText } from "lucide-react";
@@ -9,9 +11,11 @@ interface DocumentsProps {
 const DocumentList: React.FC<DocumentsProps> = ({ documents }) => {
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-lg shadow border border-gray-100">
-        <div className="border-b border-gray-200 p-4">
-          <h3 className="text-lg font-medium text-gray-900">Documents</h3>
+      <div className="bg-white dark:bg-dark-card rounded-lg shadow border border-gray-100 dark:border-dark-border">
+        <div className="border-b border-gray-200 dark:border-dark-border p-4">
+          <h3 className="text-lg font-medium text-gray-900 dark:text-dark-text">
+            Documents
+          </h3>
         </div>
 
         <div className="p-6">
@@ -19,12 +23,12 @@ const DocumentList: React.FC<DocumentsProps> = ({ documents }) => {
             <div className="relative">
               <input
                 type="text"
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 placeholder="Search documents..."
               />
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <svg
-                  className="h-5 w-5 text-gray-400"
+                  className="h-5 w-5 text-gray-400 dark:text-gray-500"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -40,79 +44,127 @@ const DocumentList: React.FC<DocumentsProps> = ({ documents }) => {
             </div>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Document Name
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Type
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Date
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {documents.map((document) => (
-                  <tr key={document.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                          <FileText className="h-5 w-5 text-gray-500" />
-                        </div>
-                        <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">
-                            {document.name}
+          {/* Desktop view */}
+          <div className="hidden md:block">
+            <div className="responsive-table-container">
+              <table className="min-w-full divide-y divide-gray-200 dark:divide-dark-border">
+                <thead className="bg-gray-50 dark:bg-gray-800">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                    >
+                      Document Name
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                    >
+                      Type
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                    >
+                      Date
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                    >
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white dark:bg-dark-card divide-y divide-gray-200 dark:divide-dark-border">
+                  {documents.map((document) => (
+                    <tr
+                      key={document.id}
+                      className="hover:bg-gray-50 dark:hover:bg-gray-800"
+                    >
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0 h-10 w-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                            <FileText className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+                          </div>
+                          <div className="ml-4">
+                            <div className="text-sm font-medium text-gray-900 dark:text-dark-text">
+                              {document.name}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {document.type}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {document.date}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button className="text-blue-600 hover:text-blue-900 mr-3">
-                        View
-                      </button>
-                      <button className="text-blue-600 hover:text-blue-900">
-                        Download
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                        {document.type}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                        {document.date}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 mr-3">
+                          View
+                        </button>
+                        <button className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300">
+                          Download
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-gray-200">
-            <h4 className="text-lg font-medium text-gray-900 mb-4">
+          {/* Mobile view */}
+          <div className="md:hidden space-y-4">
+            {documents.map((document) => (
+              <div
+                key={document.id}
+                className="bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-200 dark:border-gray-700 p-4"
+              >
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 h-10 w-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mr-3">
+                    <FileText className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-base font-medium text-gray-900 dark:text-white">
+                      {document.name}
+                    </h4>
+                    <div className="mt-1 flex justify-between">
+                      <div>
+                        <span className="text-xs text-gray-500 dark:text-gray-400">
+                          {document.type}
+                        </span>
+                        <span className="mx-2 text-gray-300 dark:text-gray-600">
+                          •
+                        </span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400">
+                          {document.date}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-3 flex space-x-3 border-t border-gray-100 dark:border-gray-700 pt-3">
+                  <button className="text-blue-600 dark:text-blue-400 text-sm font-medium">
+                    View
+                  </button>
+                  <button className="text-blue-600 dark:text-blue-400 text-sm font-medium">
+                    Download
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 pt-6 border-t border-gray-200 dark:border-dark-border">
+            <h4 className="text-lg font-medium text-gray-900 dark:text-dark-text mb-4">
               Upload New Document
             </h4>
-            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-md">
               <div className="space-y-1 text-center">
                 <svg
-                  className="mx-auto h-12 w-12 text-gray-400"
+                  className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500"
                   stroke="currentColor"
                   fill="none"
                   viewBox="0 0 48 48"
@@ -125,10 +177,10 @@ const DocumentList: React.FC<DocumentsProps> = ({ documents }) => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <div className="flex text-sm text-gray-600">
+                <div className="flex text-sm text-gray-600 dark:text-gray-400">
                   <label
                     htmlFor="doc-upload"
-                    className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
+                    className="relative cursor-pointer bg-white dark:bg-gray-700 rounded-md font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
                   >
                     <span>Upload a file</span>
                     <input
@@ -140,7 +192,7 @@ const DocumentList: React.FC<DocumentsProps> = ({ documents }) => {
                   </label>
                   <p className="pl-1">or drag and drop</p>
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
                   PNG, JPG, PDF up to 10MB
                 </p>
               </div>
