@@ -1,3 +1,4 @@
+@import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,25 +8,28 @@
   --foreground: #171717;
 }
 
-.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
 }
 
 body {
-  background-color: var(--background);
+  background: var(--background);
   color: var(--foreground);
-}
-
-/* Timetable styles */
-.timetable-container {
-  overflow-x: auto;
-  max-width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .timetable-container table {
   width: 100%;
-  min-width: 640px;
   border-collapse: collapse;
 }
 
@@ -36,33 +40,12 @@ body {
   text-align: left;
 }
 
-.dark .timetable-container th,
-.dark .timetable-container td {
-  border-color: #333333;
-}
-
 .timetable-container th {
   background-color: #f3f4f6;
   font-weight: 600;
   color: #1f2937;
 }
 
-.dark .timetable-container th {
-  background-color: #333333;
-  color: #e0e0e0;
-}
-
 .timetable-container td {
   color: #374151;
-}
-
-.dark .timetable-container td {
-  color: #d1d5db;
-}
-
-/* Responsive table */
-.responsive-table-container {
-  overflow-x: auto;
-  width: 100%;
-  -webkit-overflow-scrolling: touch;
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+// import Header from "../components/layout/Header";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
 import MobileMenu from "@/components/layout/MobileMenu";
@@ -45,10 +46,10 @@ export default function Home() {
       default:
         return (
           <div className="text-center py-12">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-dark-text mb-2">
+            <h3 className="text-lg font-medium text-gray-900 mb-2">
               Select a menu item
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-gray-600">
               Please select an option from the menu to view content.
             </p>
           </div>
@@ -57,7 +58,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-100">
       <Header
         userData={userData}
         showNotifications={showNotifications}
