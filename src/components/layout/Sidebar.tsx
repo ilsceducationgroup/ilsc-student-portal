@@ -9,7 +9,7 @@ import {
   ClipboardList,
   LogOut,
 } from "lucide-react";
-import { SidebarProps } from "../../../../types";
+import { SidebarProps } from "@/types";
 
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
   return (

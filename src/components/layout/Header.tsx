@@ -1,10 +1,10 @@
 // components/layout/Header.tsx
 import React from "react";
 import { Bell, Menu, X, ChevronDown } from "lucide-react";
-import { HeaderProps } from "../../../../types";
+import { HeaderProps } from "@/types";
 import NotificationsMenu from "./NotificationsMenu";
-import { getInitials } from "../../../../utils/helpers";
-import { announcements } from "../../../../data/mockData";
+import { getInitials } from "@/utils/helpers";
+import { announcements } from "@/data/mockData";
 
 const Header: React.FC<HeaderProps> = ({
   userData,

@@ -1,13 +1,18 @@
 // Function to decode HTML content
 export const createMarkup = (html?: string) => {
-  if (!html) return undefined;
-  return { __dangerouslySetInnerHTML: { __html: html } };
+  if (!html) return { __html: "" };
+  return { __html: html };
 };
-
 // Format date helper
 export const formatDate = (dateString: string): string => {
+  if (!dateString) return "";
+
+  // Use a fixed format instead of locale-dependent formatting
   const date = new Date(dateString);
-  return date.toLocaleString();
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
+    2,
+    "0"
+  )}-${String(date.getDate()).padStart(2, "0")}`;
 };
 
 // Get initials from name

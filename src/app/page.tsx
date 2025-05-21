@@ -1,22 +1,23 @@
 "use client";
 
 import React, { useState } from "react";
-import Header from "../app/components/layout/Header";
-import Sidebar from "../app/components/layout/Sidebar";
-import MobileMenu from "../app/components/layout/MobileMenu";
-import Dashboard from "../app/components/dashboard/Dashboard";
-import Profile from "../app/components/profile/StudentProfile";
-import Classes from "../app/components/classes/ClassInformation";
-import Requests from "../app/components/requests/ServiceRequestList";
-import Documents from "../app/components/documents/DocumentList";
-import Surveys from "../app/components/surveys/SurveyList";
+// import Header from "../components/layout/Header";
+import Header from "@/components/layout/Header";
+import Sidebar from "@/components/layout/Sidebar";
+import MobileMenu from "@/components/layout/MobileMenu";
+import Dashboard from "@/components/dashboard/Dashboard";
+import Profile from "@/components/profile/StudentProfile";
+import Classes from "@/components/classes/ClassInformation";
+import Requests from "@/components/requests/ServiceRequestList";
+import Documents from "@/components/documents/DocumentList";
+import Surveys from "@/components/surveys/SurveyList";
 import {
   userData,
   announcements,
   serviceRequests,
   documents,
   surveys,
-} from "../../data/mockData";
+} from "@/data/mockData";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("home");

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Announcement } from "../types";
-import { announcements as mockAnnouncements } from "../data/mockData";
+import { Announcement } from "@/types";
+import { announcements as mockAnnouncements } from "@/data/mockData";
 
 export const useNotifications = () => {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
@@ -13,7 +13,7 @@ export const useNotifications = () => {
     try {
       setAnnouncements(mockAnnouncements);
       setLoading(false);
-    } catch (err) {
+    } catch {
       setError("Failed to load notifications");
       setLoading(false);
     }

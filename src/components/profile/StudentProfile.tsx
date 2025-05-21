@@ -1,5 +1,5 @@
 import React from "react";
-import { User } from "../../../../types";
+import { User } from "@/types";
 
 interface ProfileProps {
   userData: User;
@@ -46,48 +46,64 @@ const StudentProfile: React.FC<ProfileProps> = ({ userData }) => {
           <div className="mt-6 border-t border-gray-200 pt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-lg font-medium mb-4">
+                <h3 className="text-lg font-medium text-gray-800 mb-4">
                   Personal Information
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-start">
-                    <span className="text-gray-500 w-32">Email:</span>
+                    <span className="text-gray-700 font-medium w-32">
+                      Email:
+                    </span>
                     <span className="text-gray-900">{userData.email}</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-gray-500 w-32">Phone:</span>
+                    <span className="text-gray-700 font-medium w-32">
+                      Phone:
+                    </span>
                     <span className="text-gray-900">{userData.phone}</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-gray-500 w-32">Address:</span>
-                    <span className="text-gray-900">
-                      123 Student Housing Ave, Vancouver, BC V6K 1A2
+                    <span className="text-gray-700 font-medium w-32">
+                      Address:
                     </span>
+                    <span className="text-gray-900">{userData.address}</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-gray-500 w-32">Nationality:</span>
+                    <span className="text-gray-700 font-medium w-32">
+                      Nationality:
+                    </span>
                     <span className="text-gray-900">Brazil</span>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h3 className="text-lg font-medium mb-4">Emergency Contact</h3>
+                <h3 className="text-lg font-medium text-gray-800 mb-4">
+                  Emergency Contact
+                </h3>
                 <div className="space-y-3">
                   <div className="flex items-start">
-                    <span className="text-gray-500 w-32">Name:</span>
+                    <span className="text-gray-700 font-medium w-32">
+                      Name:
+                    </span>
                     <span className="text-gray-900">Maria Silva</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-gray-500 w-32">Relationship:</span>
+                    <span className="text-gray-700 font-medium w-32">
+                      Relationship:
+                    </span>
                     <span className="text-gray-900">Mother</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-gray-500 w-32">Phone:</span>
+                    <span className="text-gray-700 font-medium w-32">
+                      Phone:
+                    </span>
                     <span className="text-gray-900">+55 21 98765-4321</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-gray-500 w-32">Email:</span>
+                    <span className="text-gray-700 font-medium w-32">
+                      Email:
+                    </span>
                     <span className="text-gray-900">maria.silva@email.com</span>
                   </div>
                 </div>

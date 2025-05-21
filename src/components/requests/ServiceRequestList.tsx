@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ServiceRequest } from "../../../../types";
+import { ServiceRequest } from "@/types";
 
 interface RequestsProps {
   serviceRequests: ServiceRequest[];

@@ -10,8 +10,8 @@ import {
   LogOut,
   Bell,
 } from "lucide-react";
-import { MobileMenuProps } from "../../../../types";
-import { getInitials } from "../../../../utils/helpers";
+import { MobileMenuProps } from "@/types";
+import { getInitials } from "@/utils/helpers";
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
   activeTab,

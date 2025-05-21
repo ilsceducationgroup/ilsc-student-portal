@@ -1,7 +1,7 @@
 // components/layout/NotificationsMenu.tsx
 import React from "react";
 // import { useNotifications } from "../../../../hooks/useNotifications";
-import { NotificationsMenuProps } from "../../../../types";
+import { NotificationsMenuProps } from "@/types";
 
 const NotificationsMenu: React.FC<NotificationsMenuProps> = ({
   announcements,

@@ -1,5 +1,5 @@
 import React from "react";
-import { Document } from "../../../../types";
+import { Document } from "@/types";
 import { FileText } from "lucide-react";
 
 interface DocumentsProps {

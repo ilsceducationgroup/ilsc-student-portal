@@ -1,5 +1,7 @@
 import React from "react";
-import { User, Announcement } from "../../../../types";
+import { User, Announcement } from "@/types";
+import { formatDate } from "@/utils/helpers";
+
 interface DashboardProps {
   userData: User;
   announcements: Announcement[];
@@ -14,7 +16,9 @@ const Dashboard: React.FC<DashboardProps> = ({ userData, announcements }) => {
           Welcome back, {userData.firstname}!
         </h2>
         <p className="mt-2">
-          Last login: {new Date(userData.lastlogin || "").toLocaleString()}
+          <p className="mt-2">
+            Last login: {formatDate(userData.lastlogin || "")}
+          </p>
         </p>
         <div className="mt-4 flex space-x-2">
           <button className="bg-white text-blue-600 px-4 py-2 rounded-md font-medium hover:bg-blue-50">

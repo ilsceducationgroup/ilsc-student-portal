@@ -1,5 +1,5 @@
 import React from "react";
-import { Survey } from "../../../../types";
+import { Survey } from "@/types";
 
 interface SurveysProps {
   surveys: Survey[];

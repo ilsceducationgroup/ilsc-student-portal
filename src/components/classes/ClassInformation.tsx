@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { User } from "../../../../types";
+import { User } from "@/types";
 import { Calendar } from "lucide-react";
-import { createMarkup } from "../../../../utils/helpers";
+import { createMarkup } from "@/utils/helpers";
 
 interface ClassesProps {
   userData: User;
@@ -64,22 +64,26 @@ const ClassInformation: React.FC<ClassesProps> = ({ userData }) => {
         <div className="p-6">
           {activeSectionDropdown === "timetable" && (
             <div
-              className="prose max-w-none"
-              {...createMarkup(userData.userFields?.TimeTable)}
+              className="timetable-container prose max-w-none"
+              dangerouslySetInnerHTML={createMarkup(
+                userData.userFields?.TimeTable
+              )}
             />
           )}
 
           {activeSectionDropdown === "attendance" && (
             <div
-              className="prose max-w-none"
-              {...createMarkup(userData.userFields?.Attendance)}
+              className="timetable-container prose max-w-none"
+              dangerouslySetInnerHTML={createMarkup(
+                userData.userFields?.Attendance
+              )}
             />
           )}
 
           {activeSectionDropdown === "results" && (
             <div
-              className="prose max-w-none"
-              {...createMarkup(userData.userFields?.SPR)}
+              className="timetable-container prose max-w-none"
+              dangerouslySetInnerHTML={createMarkup(userData.userFields?.SPR)}
             />
           )}
 

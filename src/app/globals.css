@@ -27,3 +27,25 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.timetable-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.timetable-container th,
+.timetable-container td {
+  border: 1px solid #e5e7eb;
+  padding: 8px;
+  text-align: left;
+}
+
+.timetable-container th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.timetable-container td {
+  color: #374151;
+}

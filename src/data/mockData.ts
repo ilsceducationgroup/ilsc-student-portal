@@ -1,4 +1,4 @@
-import { User, Announcement, ServiceRequest, Document, Survey } from "../types";
+import { User, Announcement, ServiceRequest, Document, Survey } from "@/types";
 
 // Simulated user data based on DB structure
 export const userData: User = {
@@ -11,6 +11,7 @@ export const userData: User = {
   emailstop: false,
   phone: "604-555-1234",
   school: "ILSC Vancouver",
+  address: "123 Student Housing Ave, Vancouver, BC V6K 1A2",
   lastlogin: new Date().toISOString(),
   userFields: {
     TimeTable: `<div>

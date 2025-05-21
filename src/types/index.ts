@@ -9,6 +9,7 @@ export interface User {
   emailstop: boolean;
   phone: string;
   school: string;
+  address: string;
   firstlogin?: string;
   lastlogin?: string;
   lastip?: string;
