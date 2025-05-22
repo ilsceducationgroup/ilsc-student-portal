@@ -1,3 +1,5 @@
+// src/utils/helpers.ts - Utility functions for the application
+
 // Function to decode HTML content
 export const createMarkup = (html?: string) => {
   if (!html) return { __html: "" };

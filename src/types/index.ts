@@ -1,3 +1,5 @@
+// src/types/index.ts - TypeScript types and interfaces for the application
+
 // Student User type
 export interface User {
   id: number;

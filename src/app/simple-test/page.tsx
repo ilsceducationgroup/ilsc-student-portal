@@ -1,11 +1,8 @@
-// app/simple-test/page.tsx
+// src/app/simple-test/page.tsx - Updated to use services
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  testSimpleConnection,
-  testUserWithFields,
-} from "@/utils/supabase/simple";
+import { ConnectionService, UserService } from "@/lib/services";
 import Link from "next/link";
 
 export default function SimpleTestPage() {
@@ -18,13 +15,11 @@ export default function SimpleTestPage() {
       console.log("Running connection tests...");
 
       // Test basic connection
-      const connTest = await testSimpleConnection();
-      console.log("Connection test completed:", connTest);
+      const connTest = await ConnectionService.testConnection();
       setConnectionResult(connTest);
 
       // Test getting user with fields
-      const userTest = await testUserWithFields(1);
-      console.log("User test completed:", userTest);
+      const userTest = await UserService.getUserById(1);
       setUserResult(userTest);
 
       setLoading(false);
@@ -36,9 +31,7 @@ export default function SimpleTestPage() {
   if (loading) {
     return (
       <div className="p-8">
-        <h1 className="text-2xl font-bold mb-4">
-          Testing Simple Connection...
-        </h1>
+        <h1 className="text-2xl font-bold mb-4">Testing Connection...</h1>
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
       </div>
     );
@@ -46,8 +39,9 @@ export default function SimpleTestPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Simple Supabase Test</h1>
+      <h1 className="text-2xl font-bold mb-4">Supabase Services Test</h1>
 
+      {/* Environment Check */}
       <div className="mb-6">
         <h2 className="text-lg font-semibold mb-2">Environment Check:</h2>
         <div className="bg-gray-100 p-4 rounded">
@@ -61,17 +55,12 @@ export default function SimpleTestPage() {
               ? "✅ Set"
               : "❌ Missing"}
           </p>
-          {process.env.NEXT_PUBLIC_SUPABASE_URL && (
-            <p>
-              <strong>URL Value:</strong>{" "}
-              {process.env.NEXT_PUBLIC_SUPABASE_URL.substring(0, 30)}...
-            </p>
-          )}
         </div>
       </div>
 
+      {/* Connection Test */}
       <div className="mb-6">
-        <h2 className="text-lg font-semibold mb-2">Basic Connection Test:</h2>
+        <h2 className="text-lg font-semibold mb-2">Connection Test:</h2>
         <div
           className={`p-4 rounded ${
             connectionResult?.success
@@ -84,21 +73,17 @@ export default function SimpleTestPage() {
           </p>
           {connectionResult?.error && <p>Error: {connectionResult.error}</p>}
           {connectionResult?.data && (
-            <div className="mt-2">
-              <p>
-                <strong>Data Found:</strong>
-              </p>
-              <pre className="text-sm bg-white p-2 rounded mt-1 text-black">
-                {JSON.stringify(connectionResult.data, null, 2)}
-              </pre>
-            </div>
+            <pre className="text-sm bg-white p-2 rounded mt-1 text-black">
+              {JSON.stringify(connectionResult.data, null, 2)}
+            </pre>
           )}
         </div>
       </div>
 
+      {/* User Test */}
       <div className="mb-6">
         <h2 className="text-lg font-semibold mb-2">
-          User with Fields Test (ID: 1):
+          User Service Test (ID: 1):
         </h2>
         <div
           className={`p-4 rounded ${
@@ -114,37 +99,32 @@ export default function SimpleTestPage() {
           {userResult?.data && (
             <div className="mt-2">
               <p>
-                <strong>User Data:</strong>
+                <strong>User:</strong> {userResult.data.firstname}{" "}
+                {userResult.data.lastname}
               </p>
-              <div className="text-sm bg-white p-2 rounded mt-1 text-black">
-                <p>
-                  <strong>Name:</strong> {userResult.data.firstname}{" "}
-                  {userResult.data.lastname}
-                </p>
-                <p>
-                  <strong>Email:</strong> {userResult.data.email}
-                </p>
-                <p>
-                  <strong>School:</strong> {userResult.data.school}
-                </p>
-                {userResult.data.userFields && (
-                  <div className="mt-2">
-                    <p>
-                      <strong>User Fields:</strong>
-                    </p>
-                    <ul className="list-disc list-inside">
-                      {Object.keys(userResult.data.userFields).map((field) => (
-                        <li key={field}>
-                          {field}:{" "}
-                          {userResult.data.userFields[field]
-                            ? "Has data"
-                            : "No data"}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
+              <p>
+                <strong>Email:</strong> {userResult.data.email}
+              </p>
+              <p>
+                <strong>School:</strong> {userResult.data.school}
+              </p>
+              {userResult.data.userFields && (
+                <div className="mt-2">
+                  <p>
+                    <strong>Custom Fields:</strong>
+                  </p>
+                  <ul className="list-disc list-inside">
+                    {Object.keys(userResult.data.userFields).map((field) => (
+                      <li key={field}>
+                        {field}:{" "}
+                        {userResult.data.userFields[field]
+                          ? "Has data"
+                          : "No data"}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -152,14 +132,11 @@ export default function SimpleTestPage() {
 
       <div className="mt-6">
         <Link href="/" className="text-blue-600 hover:underline mr-4">
-          ← Back to Student Portal
+          ← Back to Portal
         </Link>
-        <button
-          onClick={() => window.location.reload()}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Run Test Again
-        </button>
+        <Link href="/test-update" className="text-blue-600 hover:underline">
+          Test Updates →
+        </Link>
       </div>
     </div>
   );
