@@ -5,6 +5,7 @@ import { HeaderProps } from "@/types";
 import NotificationsMenu from "./NotificationsMenu";
 import { getInitials } from "@/utils/helpers";
 import { announcements } from "@/data/mockData";
+import { ModeToggle } from "@/components/theme/ModeToggle";
 
 const Header: React.FC<HeaderProps> = ({
   userData,
@@ -26,6 +27,7 @@ const Header: React.FC<HeaderProps> = ({
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
+            <ModeToggle />
             <div className="relative">
               <button
                 className="p-2 rounded-full text-gray-500 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
